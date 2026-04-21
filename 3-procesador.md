@@ -10,14 +10,13 @@ Asignar núcleos de CPU específicos:
 ```
 
 **¿Como saber el numero de procesadores virtuales que tiene una máquina?**
-## COMPLETAR
-
+Usando el comando echo %NUMBER_OF_PROCESSORS% si estas trabajando en un sistema windows o desde el administrador de tareas.
 ## Ejemplos
 _Puedes copiar y ejecutar directamente cada uno de los comandos_
 
 Limitar el uso de CPU a 1.5 núcleos
 ```
-docker run -d --name server-nginx --cpus="1.5" nginx:alpine
+docker run -d --name server-nginx --cpus="1.5" nginx:alpine 
 ```
 
 Restringir el contenedor para que use los núcleos de CPU 0 a 2:
