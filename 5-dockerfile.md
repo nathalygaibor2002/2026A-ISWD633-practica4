@@ -57,13 +57,17 @@ No olvides verificar en qué directorio se encuentra el archivo Dockerfile
 ```
 
 **¿Cuántos pasos se han ejecutado?**
-# RESPONDER 
-
+5 pasos (1/5 al 5/5), porque el Dockerfile tiene 5 instrucciones que generan capas.
 ### Inspeccionar la imagen creada
-# COMPLETAR CON UNA CAPTURA
+
+<img width="696" height="831" alt="image" src="https://github.com/user-attachments/assets/f8280953-9e90-4e28-85a0-62a494b74a33" />
 
 **Modificar el archivo index.html para incluir su nombre y luego crear una nueva versión de la imagen anterior**
 **¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**
+
+5 pasos igual que antes (1/5 al 5/5)
+
+Sí, esta vez tardó solo 1.6 segundos vs 162 segundos de la primera vez. Los pasos 2, 3 y 4 dicen CACHED — Docker reutilizó esas capas porque no cambiaron. Solo el paso 5 (COPY) se ejecutó de nuevo porque modificaste el index.html.
 
 ## Mecanismo de caché
 Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso de construcción y evitar la repetición de pasos que no han cambiado. Cada instrucción en un Dockerfile crea una capa en la imagen final. Docker intenta reutilizar las capas de una construcción anterior si no han cambiado, lo que reduce significativamente el tiempo de construcción.
@@ -79,11 +83,10 @@ Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso
 ```
 
 ### ¿Con que puerto host se está realizando el mapeo?
-# COMPLETAR CON LA RESPUESTA
 
+El puerto 32768 del host se mapea al puerto 80 del contenedor.
 **¿Qué es una imagen huérfana?**
-# COMPLETAR CON LA RESPUESTA
-
+Es una imagen que no tiene nombre ni etiqueta, aparece como <none>:<none> en docker images. Ocurre cuando construyes una imagen con el mismo tag que una anterior — la imagen vieja pierde su etiqueta y queda abandonada, ocupando espacio en disco sin ningún uso.
 ### Identificar imágenes huérfanas
 ```
 docker images -f "dangling=true"
